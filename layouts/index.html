@@ -1,9 +1,43 @@
 {{ define "main" }}
+
+{{ $preview_sites := $.Param "preview_sites" }}
+{{ with $preview_sites }}
+<div class="center mw5 mw7-ns flex pv3 justify-center">
+  {{ range $element := $preview_sites }}
+    <div class="w-auto pa3 mr2 outline">
+    {{ with $.Site.GetPage $element }}
+      <a class="dim no-underline {{ $.Param "text_color" | default "mid-gray" }}" href="#{{ $element }}">{{ .Title }}</a>
+    {{ end }}
+    </div>
+  {{ end }}
+</div>
+{{ end }}
+
  <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy {{ $.Param "text_color" | default "mid-gray" }}">
     {{ .Content }}
   </article>
+
+  {{ with $preview_sites }}
+  <div class="pa3 pa4-ns w-100 w-70-ns center">
+      <section class="w-100 mw8">
+    {{ range $element := $preview_sites }}
+    {{ with $.Site.GetPage $element }}
+      {{ with .Params.icon }}
+      <div class="w-100 center flex justify-center">
+          <img class="h-10 w-10 mw5 mw7-ns ph5-ns center" src="{{ . }}" alt="">
+      </div>
+      {{ end }}
+      <div id="{{ $element }}" class="pb5">
+            {{ .Render "summary-with-image" }}
+      </div>
+    {{ end }}
+    {{ end }}
+    </section>
+  </div>
+  {{ end }}
+
   {{/* Define a section to pull recent posts from. For Hugo 0.20 this will default to the section with the most number of pages. */}}
-  {{ $mainSections := .Site.Params.mainSections | default (slice "post") }}
+  {{ $mainSections := default (slice "berichte") }}
   {{/* Create a variable with that section to use in multiple places. */}}
   {{ $section := where .Site.RegularPages "Section" "in" $mainSections }}
   {{/* Check to see if the section is defined for ranging through it */}}
