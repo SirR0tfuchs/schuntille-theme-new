@@ -19,16 +19,18 @@
 
   {{ with $preview_sites }}
   <div class="pa3 pa4-ns w-100 w-70-ns center">
-      <section class="w-100 mw8">
+    <section class="w-100 mw8">
     {{ range $element := $preview_sites }}
     {{ with $.Site.GetPage $element }}
       {{ with .Params.icon }}
-      <div class="w-100 center flex justify-center">
-          <img class="h-10 w-10 mw5 mw7-ns ph5-ns center" src="{{ . }}" alt="">
-      </div>
-      {{ end }}
       <div id="{{ $element }}" class="pb5">
+        <div class="w-100 center flex justify-center">
+          <img class="h-10 w-10 mw5 mw7-ns ph5-ns center" src="{{ . }}" alt="">
+        </div>
+      {{ end }}
+        <div>
             {{ .Render "summary-with-image" }}
+        </div>
       </div>
     {{ end }}
     {{ end }}
