@@ -18,23 +18,27 @@
   </article>
 
   {{ with $preview_sites }}
-  <div class="pa3 pa4-ns w-100 w-70-ns center">
-    <section class="w-100 mw8">
+  <div class="swiper pa3 pa4-ns w-100 w-80-ns center">
+    <div class="mw8 swiper-wrapper">
     {{ range $element := $preview_sites }}
     {{ with $.Site.GetPage $element }}
       {{ with .Params.icon }}
-      <div id="{{ $element }}" class="pb5 displayElement">
-        <div class="w-100 center flex justify-center">
+      <div id="{{ $element }}" class="pb5 swiper-slide">
+        <div class="center flex justify-center">
           <img class="h-10 w-10 mw5 mw7-ns ph5-ns center" src="{{ . }}" alt="">
         </div>
       {{ end }}
-        <div>
+        <div class="mh5">
             {{ .Render "summary-with-image" }}
         </div>
       </div>
     {{ end }}
     {{ end }}
-    </section>
+    </div>
+    <div class='swiper-pagination'></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
   </div>
   {{ end }}
 

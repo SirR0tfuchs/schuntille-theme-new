@@ -1,46 +1,19 @@
-const lenis = new Lenis()
+document.addEventListener("DOMContentLoaded", () => {
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
 
-lenis.on('scroll', (e) => {
-  console.log(e)
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+
+    });
 })
-
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
-
-requestAnimationFrame(raf)
-
-gsap.registerPlugin(ScrollTrigger);
-
-// above is needed
-
-document.addEventListener("DOMContentLoaded", function(event) {
-
-  let display_elements = document.getElementsByClassName("displayElement");
-  console.log(display_elements);
-  Array.from(display_elements).forEach( (element) => {
-  gsap.timeline({
-  scrollTrigger: {
-    trigger: element,
-    pin: true,
-    start: "-30% center",
-    end: "500% 0",
-    scrub: 0,
-    markers: false,
-    }
-  })
-  .to(element, {
-    opacity: 1,
-    y: -250,
-    duration: 0.5
-  })
-  .to(element, {
-    duration: 0.5,
-  })
-  .to(element, {
-    opacity: 0,
-    duration: 0.3
-  }, 0.9);
-  });
-  })
