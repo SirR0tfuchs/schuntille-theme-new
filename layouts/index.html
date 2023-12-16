@@ -23,7 +23,7 @@
     {{ range $element := $preview_sites }}
     {{ with $.Site.GetPage $element }}
       {{ with .Params.icon }}
-      <div id="{{ $element }}" class="pb5">
+      <div id="{{ $element }}" class="pb5 displayElement">
         <div class="w-100 center flex justify-center">
           <img class="h-10 w-10 mw5 mw7-ns ph5-ns center" src="{{ . }}" alt="">
         </div>

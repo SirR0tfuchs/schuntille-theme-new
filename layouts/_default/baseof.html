@@ -18,7 +18,9 @@
     {{ end }}
 
     {{ partial "site-style.html" . }}
-    {{ partial "site-scripts.html" . }}
+    {{ if $.Site.Params.animation }}
+      {{ partial "site-scripts.html" . }}
+    {{ end }}
 
     {{ block "favicon" . }}
       {{ partialCached "site-favicon.html" . }}
