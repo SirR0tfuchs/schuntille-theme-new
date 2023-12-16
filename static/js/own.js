@@ -13,6 +13,8 @@ requestAnimationFrame(raf)
 
 gsap.registerPlugin(ScrollTrigger);
 
+// above is needed
+
 let tl = gsap.timeline({
     scrollTrigger: {
         trigger: '#oeffnungszeiten',
@@ -22,23 +24,10 @@ let tl = gsap.timeline({
     }
 })
 
+tl.from("#oeffnungszeiten", {
+    opacity: 0,
+})
+
 tl.to("#oeffnungszeiten", {
-    x: 2000,
-    duration: 0.7,
+    opacity: 1,
 })
-
-tl.to("#angebot", {
-    x: 2000,
-    duration: 0.7,
-})
-
-tl.to("#veranstaltungen", {
-    x: 2000,
-    duration: 0.7,
-})
-
-tl.to("#faq", {
-    x: 2000,
-    duration: 0.7,
-})
-

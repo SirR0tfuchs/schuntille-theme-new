@@ -2,9 +2,9 @@
 
 {{ $preview_sites := $.Param "preview_sites" }}
 {{ with $preview_sites }}
-<div class="center mw5 mw7-ns flex pv3 justify-center">
+<div id="links" class="center mw5 mw7-ns flex pv3 justify-center">
   {{ range $element := $preview_sites }}
-    <div class="w-auto pa3 mr2 outline">
+    <div class="w-auto pa3 mr2 links">
     {{ with $.Site.GetPage $element }}
       <a class="dim no-underline {{ $.Param "text_color" | default "mid-gray" }}" href="#{{ $element }}">{{ .Title }}</a>
     {{ end }}
