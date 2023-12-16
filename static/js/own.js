@@ -15,19 +15,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 // above is needed
 
-let tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: '#oeffnungszeiten',
-        start: '35% 85%',
-        scrub: false,
-        markers: true,
-    }
-})
+let tl = gsap.timeline({repeat: -1})
 
 tl.from("#oeffnungszeiten", {
     opacity: 0,
 })
 
 tl.to("#oeffnungszeiten", {
-    opacity: 1,
+    opacity: 0,
 })
