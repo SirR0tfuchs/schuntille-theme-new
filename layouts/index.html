@@ -6,7 +6,7 @@
   {{ range $element := $preview_sites }}
     <div class="w-auto pa3 mr2 links">
     {{ with $.Site.GetPage $element }}
-      <a class="dim no-underline {{ $.Param "text_color" | default "mid-gray" }}" href="#{{ $element }}">{{ .Title }}</a>
+      <a class="dim no-underline {{ $.Param "text_color" | default "mid-gray" }}" href="">{{ .Title }}</a>
     {{ end }}
     </div>
   {{ end }}
@@ -18,7 +18,7 @@
   </article>
 
   {{ with $preview_sites }}
-  <div class="swiper pa3 pa4-ns w-100 w-80-ns center">
+  <div class="swiper pa3 pa4-ns w-80-ns w-100 center">
     <div class="mw8 swiper-wrapper">
     {{ range $element := $preview_sites }}
     {{ with $.Site.GetPage $element }}
